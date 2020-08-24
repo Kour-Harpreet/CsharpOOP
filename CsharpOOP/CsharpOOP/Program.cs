@@ -21,9 +21,58 @@ namespace CsharpOOP
             // Add a play games method that will decrease energy by 15.
 
 
+            /* Group Task:
+             
+            Add an inaccessible stress level variable, initialized at 0. 
+	            -When homework is done, increase stress by 30. 
+	            -When sleep is done, decrease stress by 50 (or 5 per hour).
+	            -When games are done, decrease stress by 25.
+	            -Add a floor to stress level of 0 (similar to ceiling on energy).
+            Add a query method for stress level and that will output a string based on its level.
+            Throw an exception if stress tries to go over 100.
+            */
+
+            //If you finish: generate a student in main(you can clear out the stuff below this comment), and simulate 10 days for them.IE do homework and games until they're out of energy, sleep and repeat. I know it's a rather simple existence, but it'll suffice for now.
+
+
+
             Student myStudent = new Student();
 
-            
+                Student twoStudent = new Student("Bob", "Jones");
+
+                myStudent.FirstName = "Jane";
+
+                Console.WriteLine(myStudent.StudentID + ": " + myStudent.FirstName + " " + myStudent.LastName);
+
+                Console.WriteLine(twoStudent.StudentID + ": " + twoStudent.FirstName + " " + twoStudent.LastName);
+
+                Console.WriteLine(myStudent.QueryEnergyLevel());
+
+            Student Sarah = new Student("Sarah", "Parker");
+            for (int i = 1; i < 11; i++)
+            {
+                Console.WriteLine("DAY " + i.ToString());
+                Console.WriteLine(Sarah.QueryStressLeveL());
+                Console.WriteLine(Sarah.QueryEnergyLevel());
+                Sarah.DoHomeWork();
+                Sarah.DoHomeWork();
+                Console.WriteLine(Sarah.QueryStressLeveL());
+                Console.WriteLine(Sarah.QueryEnergyLevel());
+                Sarah.PlayGames();
+                Console.WriteLine(Sarah.QueryStressLeveL());
+                Console.WriteLine(Sarah.QueryEnergyLevel());
+                Sarah.Sleep(12);
+            }
+
+            /*
+            Console.WriteLine(aStudent.QueryStressLeveL());
+            aStudent.DoHomeWork();
+            Console.WriteLine(aStudent.QueryStressLeveL());
+            aStudent.DoHomeWork();
+            aStudent.Sleep();
+            aStudent.Sleep();
+            Console.WriteLine(aStudent.QueryStressLeveL());
+            */
         }
     }
 }
