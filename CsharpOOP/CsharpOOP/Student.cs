@@ -7,13 +7,14 @@ namespace CsharpOOP
      public class Student
     {
         // Public properties can be set externally.
-        public int StudentID { get; set; }
+        public int StudentID { get; set; } 
         public string FirstName { get; set; }
         public string LastName { get; set; }
       
         // Private properties can only be set in this class.
         private DateTime DateOfBirth { get; set; }
 
+        
         // We have to specify the backing variable for EnergyLevel because we are doing some validation with the value. 
         private int _energyLevel;
         private int EnergyLevel
@@ -35,23 +36,31 @@ namespace CsharpOOP
                 }
             }
         }
-        public Student()
+        public Student() // constructor
         {
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
         }
-        public void DoHomeWork()
+        public void DoHomeWork() //method
         {
             EnergyLevel -= 25;
         }
-        public void Sleep()
+        public void Sleep() //method
         {
             EnergyLevel = 100;
         }
-        public void Sleep(int hours)
+        public void Sleep(int hours)  //method
         {
             EnergyLevel += hours * 10;
         }
+        public void PlayGames() //method
+        {
+            EnergyLevel -= 15;
+        }
+
+
+
+
 
 
     }
