@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CsharpOOP
 {
@@ -6,19 +8,35 @@ namespace CsharpOOP
     {
         static void Main(string[] args)
         {
+           
+            // Generate a class "Student" with a string for FirstName, LastName and a int for StudentID.
 
-            string inputOne = null, inputTwo = null, inputThree = "Yes";
+            
+            Student myStudent = new Student();
 
-            // Null coalescing operator will use the left hand side if it is not null, otherwise the right side.
-            Console.WriteLine(inputOne ?? "The value was null.");
+            WriteSomeStuff();
+            WriteSomeStuff();
+            WriteSomeStuff("Yes!");
+            WriteSomeStuff("No!");
+            WriteSomeStuff("Maybe!");
+            WriteSomeStuff("Yes", "No");
+        }
 
-            // It's kind of the same as:
-            Console.WriteLine(inputOne != null ? inputOne : "The value was null.");
-
-
-            // The can be strung together as well:
-            Console.WriteLine(inputOne ?? inputTwo ?? inputThree);
-
+       
+        // Multiple versions of a method can be declared, as long as their parameter type lists differ.
+        // This is called method "overloading".
+        // The names of the parameters do not matter, they must be different types.
+        static void WriteSomeStuff()
+        {
+            Console.WriteLine("Some stuff is being written!");
+        }
+        static void WriteSomeStuff(string stuff)
+        {
+            Console.WriteLine(stuff);
+        }
+        static void WriteSomeStuff(string someStuff, string someOtherStuff)
+        {
+            Console.WriteLine(someStuff + someOtherStuff);
         }
     }
 }
