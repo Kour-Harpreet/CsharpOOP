@@ -6,14 +6,18 @@ namespace CsharpOOP
     {
         static void Main(string[] args)
         {
-          
-            // In-Class Practice Round 2:
 
-            // Try to do it without any variables at all (remove the line above these comments).
-            // Two lines (prompt and output).
+            string inputOne = null, inputTwo = null, inputThree = "Yes";
 
-            Console.Write("Please enter a string: ");
-            Console.WriteLine(Console.ReadLine().Trim().Contains(' ') ? "Multiple words." : "One word.");
+            // Null coalescing operator will use the left hand side if it is not null, otherwise the right side.
+            Console.WriteLine(inputOne ?? "The value was null.");
+
+            // It's kind of the same as:
+            Console.WriteLine(inputOne != null ? inputOne : "The value was null.");
+
+
+            // The can be strung together as well:
+            Console.WriteLine(inputOne ?? inputTwo ?? inputThree);
 
         }
     }
