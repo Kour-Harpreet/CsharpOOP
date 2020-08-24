@@ -35,44 +35,25 @@ namespace CsharpOOP
             //If you finish: generate a student in main(you can clear out the stuff below this comment), and simulate 10 days for them.IE do homework and games until they're out of energy, sleep and repeat. I know it's a rather simple existence, but it'll suffice for now.
 
 
+            Student ourStudent = new Student("Joe", "Dirt");
 
-            Student myStudent = new Student();
-
-                Student twoStudent = new Student("Bob", "Jones");
-
-                myStudent.FirstName = "Jane";
-
-                Console.WriteLine(myStudent.StudentID + ": " + myStudent.FirstName + " " + myStudent.LastName);
-
-                Console.WriteLine(twoStudent.StudentID + ": " + twoStudent.FirstName + " " + twoStudent.LastName);
-
-                Console.WriteLine(myStudent.QueryEnergyLevel());
-
-            Student Sarah = new Student("Sarah", "Parker");
-            for (int i = 1; i < 11; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                Console.WriteLine("DAY " + i.ToString());
-                Console.WriteLine(Sarah.QueryStressLeveL());
-                Console.WriteLine(Sarah.QueryEnergyLevel());
-                Sarah.DoHomeWork();
-                Sarah.DoHomeWork();
-                Console.WriteLine(Sarah.QueryStressLeveL());
-                Console.WriteLine(Sarah.QueryEnergyLevel());
-                Sarah.PlayGames();
-                Console.WriteLine(Sarah.QueryStressLeveL());
-                Console.WriteLine(Sarah.QueryEnergyLevel());
-                Sarah.Sleep(12);
+                Console.WriteLine($"----------\nStarting Day {i}");
+                try
+                {
+                    ourStudent.DoHomework();
+                    ourStudent.DoHomework();
+                    ourStudent.PlayGames();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                ourStudent.Sleep(7);
+                Console.WriteLine($"Energy Level: {ourStudent.QueryEnergyLevel()}\nStress Level: {ourStudent.QueryStressLevel()}");
             }
 
-            /*
-            Console.WriteLine(aStudent.QueryStressLeveL());
-            aStudent.DoHomeWork();
-            Console.WriteLine(aStudent.QueryStressLeveL());
-            aStudent.DoHomeWork();
-            aStudent.Sleep();
-            aStudent.Sleep();
-            Console.WriteLine(aStudent.QueryStressLeveL());
-            */
         }
     }
 }

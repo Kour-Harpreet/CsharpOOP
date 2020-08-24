@@ -8,12 +8,9 @@ namespace CsharpOOP
     {
         // Public properties can be set externally.
         public int StudentID { get; set; }
-
         // A default property auto-generates the backing variable as a private variable of the same type.
         // The getter and setter are also automatically generated.
-
         public string FirstName { get; set; }
-
         // The above auto-generated property can be likened to the following:
         private string _lastName;
         public string LastName
@@ -36,15 +33,6 @@ namespace CsharpOOP
 
             }
         }
-
-        // Private properties can only be set in this class.
-        private DateTime DateOfBirth { get; set; }
-        // Constructors are used to create an instance of a class.
-        // The class is the schematic and the object is the instance.
-
-        // A "default" constructor takes no parameters. 
-        // If no constructor is declared, C# will generate one that populates properties with their default values. The same is true if any properties go undeclared by the end of the constructor.
-
         // We have to specify the backing variable for EnergyLevel because we are doing some validation with the value. 
         private int _energyLevel;
         private int EnergyLevel
@@ -55,23 +43,65 @@ namespace CsharpOOP
             }
             set
             {
-                // If the incoming value is over 100, clamp it to 100.
-                if (value > 100)
+               
+                // If the incoming value is over 125, clamp it to 125.
+                if (value > 125)
                 {
-                    _energyLevel = 100;
+                    _energyLevel = 125;
                 }
                 else
                 {
-                    _energyLevel += value;
+                    if (value < 0)
+                    {
+                        throw new Exception("Not enough energy to do that task!");
+                    }
+                    _energyLevel = value;
                 }
             }
         }
+
+        // We have to specify the backing variable for EnergyLevel because we are doing some validation with the value. 
         private int _stressLevel;
-        private int StressLevel { get; set; }
-        public Student() // constructor
+        private int StressLevel
         {
+            get
+            {
+                return _stressLevel;
+            }
+            set
+            {
+                // If the incoming value is under 0, set it to 0
+                if (value < 0)
+                {
+                    _stressLevel = 0;
+                }
+                else
+                {
+                    if (value > 100)
+                    {
+                        throw new Exception("Too stressed, can't do that task!");
+                    }
+                    _stressLevel = value;
+                }
+            }
+        }
+
+        // Private properties can only be set in this class.
+        private DateTime DateOfBirth { get; set; }
+
+        // Constructor name must be the same as the class name.
+        // Constructors are used to create an instance of a class.
+        // The class is the schematic and the object is the instance.
+        // A "default" constructor takes no parameters. 
+        // If no constructor is declared, C# will generate one that populates properties with their default values. The same is true if any properties go undeclared by the end of the constructor.
+        public Student()
+        {
+            StudentID = 1000;
+            FirstName = "John";
+            LastName = "Doe";
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
+            StressLevel = 0;
         }
         // A "partial" constructor takes some of the properties as arguments, and defaults the rest.
         public Student(string firstName, string lastName)
@@ -81,6 +111,7 @@ namespace CsharpOOP
             LastName = lastName;
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
+            StressLevel = 0;
         }
         // A "greedy" constructor takes all of the properties as arguments.
         // Depending on your implementation you may or may not allow private properties to be set via parameter. In this example we will not.
@@ -91,37 +122,37 @@ namespace CsharpOOP
             LastName = lastName;
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
+            StressLevel = 0;
         }
 
         // Additional methods can be defined on a class, and will operate on the instance of the object.
-        public void DoHomeWork() //method
-        {
-            if (StressLevel > 71)
-            {
-                throw new Exception("Too much stress! Take a break!");
-            }
-            else
-            {
-                EnergyLevel -= 25;
-                // Same as EnergyLevel = EnergyLevel - 25;
-                StressLevel += 30;
-            }
-        }
-        public void Sleep() //method
-        {
-            EnergyLevel = 100;
-            StressLevel -= 50;
-        }
-        public void Sleep(int hours)  //method
-        {
-            EnergyLevel += hours * 10;
-            StressLevel -= hours * 5;
-        }
-        public void PlayGames() //method
+        public void PlayGames()
         {
             EnergyLevel -= 15;
             StressLevel -= 25;
         }
+
+        public void DoHomework()
+        {
+           
+            // TODO: Fix bug where if EnergyLevel fails, StressLevel will still be modified.
+            StressLevel += 30;
+            EnergyLevel -= 25;
+            // Same as EnergyLevel = EnergyLevel - 25;
+        }
+
+        public void Sleep()
+        {
+            EnergyLevel = 100;
+            StressLevel -= 50;
+        }
+
+        public void Sleep(int hours)
+        {
+            EnergyLevel += hours * 10;
+            StressLevel -= hours * 5;
+        }
+
         public string QueryEnergyLevel()
         {
             string output;
@@ -145,31 +176,31 @@ namespace CsharpOOP
             {
                 output = "Basically a zombie here, why aren't I asleep?";
             }
-
             return output;
         }
-        public string QueryStressLeveL()
+
+        public string QueryStressLevel()
         {
             string output;
-            if (StressLevel > 100)
+            if (StressLevel > 90)
             {
                 output = "I'm super stressed!";
             }
-            else if (StressLevel > 75)
+            else if (StressLevel > 60)
             {
-                output = "I'm kinda stressed out";
+                output = "Getting pretty stressed, need a break soon.";
             }
-            else if (StressLevel > 40)
+            else if (StressLevel > 30)
             {
-                output = "Starting to get a bit tired.";
+                output = "Not too stressed.";
             }
             else if (StressLevel > 10)
             {
-                output = "I feel great";
+                output = "Barely stressed at all.";
             }
             else
             {
-                output = "Feeling Great! Ready to do some work!";
+                output = "I am zen. I am one with the universe.";
             }
             return output;
         }
