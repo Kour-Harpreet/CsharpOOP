@@ -7,15 +7,14 @@ namespace CsharpOOP
     public class SchoolClass
     {
         /*
-       Create Properties for:
-       -Class Code
-       -Class Name
-       -Maximum Students (private)
-      */
+           Create Properties for:
+           -Class Code
+           -Class Name
+           -Maximum Students (private)
+          */
         public string ClassCode { get; set; }
         public string ClassName { get; set; }
         private int MaxStudents { get; set; }
-
         private Teacher _teacher;
         public Teacher ClassTeacher
         {
@@ -28,7 +27,6 @@ namespace CsharpOOP
                 // _teacher is "Old teacher"
                 // value is "New teacher"
                 // this is the current class we're working with
-
                 // Check if the current (old, before reassignment) teacher reference of this class object instance is null. If it's not, check if this class instance is in that teacher's class list. 
                 // By having the null check as the left (first) operand of the 'and' (&&), we ensure that we don't get a null reference exception.
                 // The second operand of a an 'and' will only be checked if the first operand is true. Since it's only true if the reference is not null, we're "safe".
@@ -44,13 +42,18 @@ namespace CsharpOOP
                 _teacher = value;
             }
         }
-
         public SchoolClass()
         {
             ClassCode = "CLASS101";
             ClassName = "Introduction to School Stuff";
             MaxStudents = 10;
-          
+        }
+
+        public SchoolClass(string classCode, string className)
+        {
+            ClassCode = classCode;
+            ClassName = className;
+            MaxStudents = 10;
         }
     }
 }
