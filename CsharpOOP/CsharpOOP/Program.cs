@@ -8,55 +8,51 @@ namespace CsharpOOP
     {
         static void Main(string[] args)
         {
-            // Modify the student class to have a property for energy level.
-            // The energy level should not be accessible from outside the student.
-            // Create methods in the student that are accessible, for do homework and sleep.
-            // Do homework will lower the student's energy level by 25. Sleep will set the energy level to 100.
-            // When a student is created, ensure their energy level starts at 100.
+            SchoolClass historyClass = new SchoolClass();
+            historyClass.ClassCode = "HIST101";
+            historyClass.ClassName = "Introduction to History";
 
-            // Overload the sleep method to allow a value of hours. Increase energy by 10 per hour slept.
-            // Add a ceiling of 100 to sleep.
-
-            // Task:
-            // Add a play games method that will decrease energy by 15.
-
-
-            /* Group Task:
-             
-            Add an inaccessible stress level variable, initialized at 0. 
-	            -When homework is done, increase stress by 30. 
-	            -When sleep is done, decrease stress by 50 (or 5 per hour).
-	            -When games are done, decrease stress by 25.
-	            -Add a floor to stress level of 0 (similar to ceiling on energy).
-            Add a query method for stress level and that will output a string based on its level.
-            Throw an exception if stress tries to go over 100.
-            */
-
-            //If you finish: generate a student in main(you can clear out the stuff below this comment),
-            //and simulate 10 days for them.IE do homework and games until they're out of energy, 
-            //sleep and repeat. I know it's a rather simple existence, but it'll suffice for now.
-
-
-            Student ourStudent = new Student("Joe", "Dirt");
-            Console.WriteLine(ourStudent.QueryStressLevel());
-
-            for (int i = 1; i <= 10; i++)
+            // Rather than assigning props as multiple statements, you can assign them during construction.
+            SchoolClass englishClass = new SchoolClass()
             {
-                Console.WriteLine($"----------\nStarting Day {i}");
-                try
-                {
-                    ourStudent.DoHomework();
-                    ourStudent.DoHomework();
-                    ourStudent.PlayGames();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                ourStudent.Sleep(7);
-                Console.WriteLine($"Energy Level: {ourStudent.QueryEnergyLevel()}\nStress Level: {ourStudent.QueryStressLevel()}");
-            }
+                ClassCode = "ENGL101",
+                ClassName = "Introduction to English"
+            };
+            Teacher sueTeacher = new Teacher()
+            {
+                StaffID = 2050,
+                FirstName = "Sue",
+                LastName = "Smith"
+            };
+            Teacher joeTeacher = new Teacher()
+            {
+                StaffID = 2050,
+                FirstName = "Joe",
+                LastName = "Testificate"
+            };
 
-        }
+            // For this test run:
+            // Old teacher will be NULL
+            // New teacher will be Sue
+            // "this" will be History class
+            historyClass.ClassTeacher = sueTeacher;
+
+            // For this test run:
+            // Old teacher will be Sue
+            // New teacher will be Joe
+            // "this" will be History class
+            historyClass.ClassTeacher = joeTeacher;
+
+            Console.WriteLine($"The class has the classcode {historyClass.ClassCode}, is called {historyClass.ClassName}" +
+                $" and is being taught by {historyClass.ClassTeacher.FirstName} {historyClass.ClassTeacher.LastName}.");
+
+
+
+
+
+
+        
+
+    }
     }
 }
