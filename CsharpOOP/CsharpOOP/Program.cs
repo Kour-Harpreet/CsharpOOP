@@ -9,27 +9,21 @@ namespace CsharpOOP
         static void Main(string[] args)
        
         {
+            Homework myHomework = new Homework();
             // Stacks are "Last-In, First-Out"
-            Stack<string> myStack = new Stack<string>();
+            Stack<string> myHomeworkStack = new Stack<string>();
 
             // Push means "add to".
-            myStack.Push("First String");
-            myStack.Push("Second String");
-            myStack.Push("Third String");
+            myHomeworkStack.Push("First String");
+            myHomeworkStack.Push("Second String");
+            myHomeworkStack.Push("Third String");
 
+           
 
             // Pop means "take the next" (return it, and remove it).
-            Console.WriteLine(myStack.Pop());
+        
 
-            // Queues are "First-In, First-Out"
-            // Enqueue and dequeue mean the same thing as push and pop respectively, except dequeue will remove from the front instead of the end.
-            Queue<string> myQueue = new Queue<string>();
-
-            myQueue.Enqueue("First String");
-            myQueue.Enqueue("Second String");
-            myQueue.Enqueue("Third String");
-
-            Console.WriteLine(myQueue.Dequeue());
+           
 
             // Dictionaries are sort of like lists, except rather than indexed by an integer, they can be indexed by other things.
             string testString = "TechCareers teach code";
