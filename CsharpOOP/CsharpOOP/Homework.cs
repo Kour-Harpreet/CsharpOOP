@@ -22,7 +22,7 @@ namespace CsharpOOP
 
         and stress will increase by complexity times 5.
        */
-        public string PendingHomework { get; set; }
+       
 
         private int _complexity;
         public int Complexity
@@ -42,21 +42,12 @@ namespace CsharpOOP
                 {
                     _complexity = 5;
                 }
+                else
+                {
+                    _complexity = value;
+                }
             }
         }
-         public Homework() // constructor
-        {
-            Complexity = 1;
-            PendingHomework = "No";
-        }   
-            
-        public void DoHomework()
-        {
-            myHomeworkStack.pop();
-        }
-        public void DoHomework(Complexity)
-        {
-           
-        }
+        
     }
 }
