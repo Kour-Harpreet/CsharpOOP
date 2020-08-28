@@ -45,30 +45,30 @@ namespace CsharpOOP
             Console.WriteLine($"Number of distinct items less than 50: {testList.Distinct().Count(x => x < 50)}.");
 
             // .OrderBy() will reorder the list based on the lambda comparison provided.
-            Console.Write("List in order: ");
-            foreach (int item in testList.OrderBy(x => x))
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine();
+            /*  Console.Write("List in order: ");
+              foreach (int item in testList.OrderBy(x => x))
+              {
+                  Console.Write(item + " ");
+              }
+              Console.WriteLine();
 
-            Console.Write("Distinct list in order: ");
-            foreach (int item in testList.Distinct().OrderBy(x => x))
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine();
+              Console.Write("Distinct list in order: ");
+              foreach (int item in testList.Distinct().OrderBy(x => x))
+              {
+                  Console.Write(item + " ");
+              }
+              Console.WriteLine();*/
 
             // .Select() will return a sub-list of associated values based on the lambda.
-            Console.Write("List in order, plus 1: ");
-            foreach (int item in testList.Select(x => x + 1).OrderBy(x => x))
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine();
+            /* Console.Write("List in order, plus 1: ");
+             foreach (int item in testList.Select(x => x + 1).OrderBy(x => x))
+             {
+                 Console.Write(item + " ");
+             }
+             Console.WriteLine();*/
 
             // .Where() will return a sub-list of filtered values based on the lambda.
-            Console.Write("List in order, only over 50: ");
+            /*Console.Write("List in order, only over 50: ");
             foreach (int item in testList.Where(x => x > 50).OrderBy(x => x))
             {
                 Console.Write(item + " ");
@@ -80,7 +80,29 @@ namespace CsharpOOP
             {
                 Console.Write(item + " ");
             }
-            Console.WriteLine();
+            Console.WriteLine();*/
+
+
+
+            
+
+
+            // Basic List Questions (using theList):
+            Console.WriteLine($"The average of all the items which are less than 20 is: {testList.Where(x => x < 20).Average()}");
+            Console.WriteLine($"The largest item that is less than 50 is: {testList.Where(x => x < 50).Max()}");
+            Console.WriteLine($"The third distinct item, in numerical order is: {testList.Distinct().OrderBy(x => x).ToList()[2]}");
+            Console.WriteLine($"The most number of duplicated items is: {testList.Select(x => testList.Where(y => y == x).Count()).Max()}"); // The Select returns: 1, 1, 1, 2, 1, 1, 3, 1, 1, 3, 2, 3
+            Console.WriteLine($"The sum of all odd numbers is: {testList.Where(x => x % 2 == 1).Sum()}");
+            Console.WriteLine($"The lowest number that is divisible by 4 is: {testList.Where(x => x % 4 == 0).Min()}");
+            Console.WriteLine($"The average remainder when the distinct items are divided by 5 is: {testList.Distinct().Select(x => x % 5).Average()}");
+
+
+            OutputList("List in order: ", testList.OrderBy(x => x).ToList());
+            OutputList("Distinct list in order: ", testList.Distinct().OrderBy(x => x).ToList());
+            OutputList("List in order, plus 1: ", testList.Select(x => x + 1).OrderBy(x => x).ToList());
+
+            OutputList("List in order, only over 50: ", testList.Where(x => x > 50).OrderBy(x => x).ToList());
+            OutputList("List in order, only evens: ", testList.Where(x => x % 2 == 0).OrderBy(x => x).ToList());
 
             // average, distinct, where, select
             // Find the average of the distinct values over 25, but subtract 5 from each before the average takes place.
@@ -88,24 +110,34 @@ namespace CsharpOOP
 
 
 
+
+            // Nested list for example.
             List<List<int>> nested = new List<List<int>>();
             nested.Add(new List<int>() { 5, 42, 60, 8 });
-            nested.Add(new List<int>() { 9, 12, 52, 4 });
-            nested.Add(new List<int>() { 100, 46, 32, 7 });
+            nested.Add(new List<int>() { 9, 12, 52, 4, 3, 27, 92 });
+            nested.Add(new List<int>() { 100, 46, 32, 7, 101 });
 
             // The Select(x => x.Max()) will return a new list which contains the maxes of each child list.
             // The subsequent .Max() will return the max of that list, which is the max overall.
             nested.Select(x => x.Max()).Max();
 
 
-            // Basic List Questions (using theList):
-            Console.WriteLine($"The average of all the items which are less than 20 is: {}");
-            Console.WriteLine($"The largest item that is less than 50 is: {}");
-            Console.WriteLine($"The third distinct item, in numerical order is: {}");
-            Console.WriteLine($"The most number of duplicated items is: {}");
-            Console.WriteLine($"The sum of all odd numbers is: {}");
-            Console.WriteLine($"The lowest number that is divisible by 4 is: {}");
-            Console.WriteLine($"The average remainder when the distinct items are divided by 5 is: {}")
+            // Intermediate List Questions (using nested):
+            /* Console.WriteLine($"The number of elements in the list with the most elements is: {}");
+             Console.WriteLine($"The number of elements in all the lists combined is: {}");
+             Console.WriteLine($"The number of even elements multiplied by the number of odd elements overall is: {}");
+             Console.WriteLine($"The average of the amount of numbers in each list divisible by 3 is: {}");*/
+        }
+
+
+        public static void OutputList(string prompt, List<int> list)
+        {
+            Console.Write(prompt);
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                Console.Write(list[i] + ", ");
+            }
+            Console.WriteLine(list[list.Count - 1]);
         }
     }
 }
