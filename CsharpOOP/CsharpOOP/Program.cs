@@ -86,6 +86,26 @@ namespace CsharpOOP
             // Find the average of the distinct values over 25, but subtract 5 from each before the average takes place.
             Console.WriteLine($"Answer: {testList.Where(x => x > 25).Distinct().Select(x => x - 5).Average()}");
 
+
+
+            List<List<int>> nested = new List<List<int>>();
+            nested.Add(new List<int>() { 5, 42, 60, 8 });
+            nested.Add(new List<int>() { 9, 12, 52, 4 });
+            nested.Add(new List<int>() { 100, 46, 32, 7 });
+
+            // The Select(x => x.Max()) will return a new list which contains the maxes of each child list.
+            // The subsequent .Max() will return the max of that list, which is the max overall.
+            nested.Select(x => x.Max()).Max();
+
+
+            // Basic List Questions (using theList):
+            Console.WriteLine($"The average of all the items which are less than 20 is: {}");
+            Console.WriteLine($"The largest item that is less than 50 is: {}");
+            Console.WriteLine($"The third distinct item, in numerical order is: {}");
+            Console.WriteLine($"The most number of duplicated items is: {}");
+            Console.WriteLine($"The sum of all odd numbers is: {}");
+            Console.WriteLine($"The lowest number that is divisible by 4 is: {}");
+            Console.WriteLine($"The average remainder when the distinct items are divided by 5 is: {}")
         }
     }
 }
