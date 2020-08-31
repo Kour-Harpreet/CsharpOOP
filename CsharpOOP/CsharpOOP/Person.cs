@@ -4,9 +4,7 @@ using System.Text;
 
 namespace CsharpOOP
 {
-     public class Student : Person
+    public class Person
     {
-        public int StudentID { get; set; }
     }
 }
-
