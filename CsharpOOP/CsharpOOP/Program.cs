@@ -68,15 +68,19 @@ namespace CsharpOOP
 
             // Intermediate List Questions (using nested):
             Console.WriteLine("\n Intermediate List Questions\n");
-            Console.WriteLine($"The number of elements in the list with the most elements is: {nested.Select(x => x.Count()).Max()}");
-            Console.WriteLine($"The number of elements in all the lists combined is: {nested.Select(x => x.Count).Sum()}");
+            Console.WriteLine($"The number of elements in the list with the most elements is: " +
+                $"{nested.Select(x => x.Count()).Max()}");
+            Console.WriteLine($"The number of elements in all the lists combined is:" +
+                $" {nested.Select(x => x.Count).Sum()}");
             // Select the counts of odd numbers in each list
             // Sum those
             // Select the counts of even numbers in each list
             // Sum those
             // Multiply the two together
-            Console.WriteLine($"The number of even elements multiplied by the number of odd elements overall is: {nested.Select(x => x.Where(x => x % 2 == 0).Count()).Sum() * nested.Select(x => x.Where(x => x % 2 == 1).Count()).Sum()}");
-            Console.WriteLine($"The average of the amount of numbers in each list divisible by 3 is: {nested.Select(x => x.Where(y => y % 3 == 0).Count()).Average()}");
+            Console.WriteLine($"The number of even elements multiplied by the number of odd elements overall is:" +
+    $" {nested.Select(x => x.Where(x => x % 2 == 0).Count()).Sum() * nested.Select(x => x.Where(x => x % 2 == 1).Count()).Sum()}");
+            Console.WriteLine($"The average of the amount of numbers in each list divisible by 3 is:" +
+                $" {nested.Select(x => x.Where(y => y % 3 == 0).Count()).Average()}");
         }
         public static void OutputList(string prompt, List<int> list)
         {
