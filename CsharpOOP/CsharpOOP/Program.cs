@@ -4,44 +4,39 @@ using System.Text;
 
 namespace CsharpOOP
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
 
         {
+            /*
+               *Create a Container object that cannot be instantiated itself, only its children can be instantiated.
+               *The Container will have a Capacity and Contents property and a Search() method.
+           * The search method will write "You open the container."    
+               *It's children will be "Box", "Chest" and "Cupboard".
+              * Each child will have a constructor that will define capacity at:
+                   Box: 6
+                   Chest: 8
+                   Cupboard: 4
+               Override the search method and add "The $type contains {Contents} items of a maximum {Capacity}."
+            Call the base version first.
+                 Create a Fruit object that cannot be instantiated, with a Colour property. 
+            Inherit Apple, Orange and Banana therefrom and construct their colours appropriately.
 
-            // Method and properties can have keywords added to them in classes that impact their behaviour and abilities. 
-            // A "virtual" method/property can be overriden in a child class, but has a implementation in the parent class.
-            // For example, a virtual method might be something like movement where all characters will move up when the MoveUp() method is called, but may have other things occur when they do. Parent virtual methods typically implement behaviour that is common to all child objects.
+           */
 
-            // A "abstract" method/property MUST be overriden / implemented in the child class(es), because it has no implementation in the parent class.
-            // For example, an abstract method might be something like an attack method where there is no common functionality between all children, but they should all have their own way of doing it.
+            Box newBox = new Box();
+            newBox.Search();
 
-            // A "override" method/property is overwriting / adding to functionality from a base class.
+            Chest newChest = new Chest()
+            {
+                Contents = 3
+            };
+            
+            newChest.Search();
 
-            // An "abstract" class means that it cannot be instantiated itself, only its children can be instantiated.
-
-
-            SecondaryStudent theStudent = new SecondaryStudent();
-
-            // Because PrimaryStudent and SecondaryStudent both inherit from Student, they both have StudentID.
-            // Because Student inherits from Person, Student and all its child classes have FirstName and LastName.
-            theStudent.FirstName = "Jimmy";
-            theStudent.LastName = "Jones";
-            theStudent.StudentID = 10001;
-            // Being that NeedsNap is defined in PrimaryStudent, SecondaryStudent does not have it.
-
-            theStudent.AttendClass();
-
-            Console.WriteLine("-------");
-
-            PrimaryStudent youngStudent = new PrimaryStudent();
-            // But PrimaryStudent does, along with all the other Student stuff.
-            youngStudent.NeedsNap = true;
-            youngStudent.AttendClass();
-
-            // In this case, the Student class is abstract, so it cannot be instantiated itself. We must be more specific and instantiate either a PrimaryStudent or SecondaryStudent.
-            Student randomStudent = new Student();
+            Cupboard newCupboard = new Cupboard();
+            newCupboard.Search();
 
         }
     }
