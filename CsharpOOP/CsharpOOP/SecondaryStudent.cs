@@ -10,6 +10,7 @@ namespace CsharpOOP
 
         public bool StudentCouncilMember { get; set; }
 
+        // Overrides can be applied to both virtual and abstract methods, as well as prior overrides.
         public override void AttendClass()
         {
             base.AttendClass();

@@ -6,6 +6,9 @@ namespace CsharpOOP
 {
     public class Person
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
         // If we want to open this method up to be overridden, it must be marked as "virtual".
         public virtual void AttendClass()
         {
