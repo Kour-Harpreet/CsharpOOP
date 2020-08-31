@@ -25,18 +25,52 @@ namespace CsharpOOP
 
            */
 
-            Box newBox = new Box();
-            newBox.Search();
-
-            Chest newChest = new Chest()
+            // Polymorphic lists contain multiple types of things.
+            // Everything in the list MUST be a child type of the list type (in this case Fruit).
+            Chest myChest = new Chest()
             {
-                Contents = 3
+                Contents = new List<Fruit>()
             };
-            
-            newChest.Search();
 
-            Cupboard newCupboard = new Cupboard();
-            newCupboard.Search();
+            // Orange, Apple and Banana are children of Fruit and therefore can be added.
+            myChest.Contents.Add(new Orange());
+            myChest.Contents.Add(new Apple());
+            myChest.Contents.Add(new Banana());
+
+            foreach (Fruit fruit in myChest.Contents)
+            {
+                // Because Fruit contains the definition for Colour, all children have it and therefore we have easy access to that property on all elements in the list.
+                Console.WriteLine(fruit.Colour);
+
+                // GetType() will return the "Type" object of a variable (the datatype).
+                // If you want to compare that with a class/datatype/etc, you must use typeof().
+                if (fruit.GetType() == typeof(Apple))
+                {
+                    // Because only Apple has the Type property and not Banana or Orange (or Fruit), we must typecast the "fruit" iterator to an Apple in order to access the property.
+                    // Attempting to typecast to the wrong type will throw an exception (hence the decision above).
+                    Console.WriteLine(((Apple)fruit).Type);
+                }
+                else
+                {
+                    Console.WriteLine("Not an apple!");
+                }
+
+            }
+            myChest.Search();
+
+            // Polymorphic object reference. Lists are more common but these are used as properties sometimes, etc.
+            Fruit aFruit = new Apple();
+
+            // Depending who you ask, this is either the best thing ever, or should never be done ever.
+            // EVERYTHING in C# inherits from "object" on one level or another, and therefore this list will accept anything you put in it.
+            // Should you do it? Probably not, it's really messy. But it's cool to think about.
+            List<object> superList = new List<object>();
+            superList.Add(5);
+            superList.Add("Hello");
+            superList.Add(3.14);
+            superList.Add('!');
+            superList.Add(new Apple());
+
 
         }
     }

@@ -7,7 +7,8 @@ namespace CsharpOOP
     public abstract class Container
     {
         public int Capacity { get; set; }
-        public int Contents { get; set; }
+        public List<Fruit> Contents { get; set; }
+
 
         public virtual void Search()
         {

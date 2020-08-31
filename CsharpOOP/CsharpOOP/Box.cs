@@ -13,7 +13,7 @@ namespace CsharpOOP
         public override void Search()
         {
             base.Search();
-            Console.WriteLine($"The Box contains {Contents} items of a maximum {Capacity}.");
+            Console.WriteLine($"The Box contains {Contents.Count} items of a maximum {Capacity}.");
         }
     }
 }

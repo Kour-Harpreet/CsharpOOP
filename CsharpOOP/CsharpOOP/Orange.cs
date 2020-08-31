@@ -9,7 +9,7 @@ namespace CsharpOOP
     {
         public  Orange()
         {
-            Colour = "Lemon";
+            Colour = "Orange";
         }
     }
 }
