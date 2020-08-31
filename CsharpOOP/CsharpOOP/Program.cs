@@ -18,10 +18,14 @@ namespace CsharpOOP
             theStudent.StudentID = 10001;
             // Being that NeedsNap is defined in PrimaryStudent, SecondaryStudent does not have it.
 
+            theStudent.AttendClass();
+
+            Console.WriteLine("-------");
 
             PrimaryStudent youngStudent = new PrimaryStudent();
             // But PrimaryStudent does, along with all the other Student stuff.
             youngStudent.NeedsNap = true;
+            youngStudent.AttendClass();
         }
     }
 }
