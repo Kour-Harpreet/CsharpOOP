@@ -1,38 +1,25 @@
-﻿using System;
+﻿
+using CsharpOOP.School;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpOOP
+namespace CsharpOOP.People
 {
-     public class Student
+    
+    public class Student : Person
     {
+        
+
+
         // Public properties can be set externally.
         public int StudentID { get; set; }
-        // A default property auto-generates the backing variable as a private variable of the same type.
-        // The getter and setter are also automatically generated.
-        public string FirstName { get; set; }
-        // The above auto-generated property can be likened to the following:
-        private string _lastName;
-        public string LastName
-        {
-            get // Output of the value.
-            {
-                // The "getter" is called whenever the user tries to use the property.
-                // Example: writing it out, assigning another variable to it, etc.
-                // (string myVar = student.LastName)
-                // Do any formatting of values here.
-                return _lastName;
 
-            }
-            set // Input to the value.
-            {
-                // The "setter" is called whenever the user tries to assign the property.
-                // 'value' is a keyword that represents what the user is trying to assign thereto.
-                // Do any validation of values here.
-                _lastName = value;
+        
 
-            }
-        }
+        public Stack<Homework> PendingHomework { get; set; }
+
+        public WritingInstrument WritingInstrument { get; set; }
         // We have to specify the backing variable for EnergyLevel because we are doing some validation with the value. 
         private int _energyLevel;
         private int EnergyLevel
@@ -43,7 +30,6 @@ namespace CsharpOOP
             }
             set
             {
-               
                 // If the incoming value is over 125, clamp it to 125.
                 if (value > 125)
                 {
@@ -59,7 +45,6 @@ namespace CsharpOOP
                 }
             }
         }
-
         // We have to specify the backing variable for EnergyLevel because we are doing some validation with the value. 
         private int _stressLevel;
         private int StressLevel
@@ -86,8 +71,8 @@ namespace CsharpOOP
             }
         }
 
-        // Private properties can only be set in this class.
-        private DateTime DateOfBirth { get; set; }
+      
+
 
         // Constructor name must be the same as the class name.
         // Constructors are used to create an instance of a class.
@@ -102,6 +87,8 @@ namespace CsharpOOP
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
             StressLevel = 0;
+            WritingInstrument = new Pen();
+            PendingHomework = new Stack<Homework>();
         }
         // A "partial" constructor takes some of the properties as arguments, and defaults the rest.
         public Student(string firstName, string lastName)
@@ -112,6 +99,8 @@ namespace CsharpOOP
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
             StressLevel = 0;
+            WritingInstrument = new Pen();
+            PendingHomework = new Stack<Homework>();
         }
         // A "greedy" constructor takes all of the properties as arguments.
         // Depending on your implementation you may or may not allow private properties to be set via parameter. In this example we will not.
@@ -123,25 +112,30 @@ namespace CsharpOOP
             DateOfBirth = DateTime.Now;
             EnergyLevel = 100;
             StressLevel = 0;
+            WritingInstrument = new Pen();
+            PendingHomework = new Stack<Homework>();
         }
-
         // Additional methods can be defined on a class, and will operate on the instance of the object.
         public void PlayGames()
         {
             EnergyLevel -= 15;
             StressLevel -= 25;
         }
-
         public void DoHomework()
         {
             // Save the values before we try the homework.
             int tempEnergy = EnergyLevel, tempStress = StressLevel;
-
             try
             {
                 // Try to set the properties to the new ones.
-                EnergyLevel -= 25;
-                StressLevel += 30;
+                // If we pop first, then we will be missing the item if anything fails.
+                // If we pop in each step, we'll be getting a new item each time.
+                // So we peek, which shows the top item, without removing it. Kind of like flipping the top card on a deck.
+                EnergyLevel -= 10 * PendingHomework.Peek().Complexity;
+                StressLevel += 5 * PendingHomework.Peek().Complexity;
+                WritingInstrument.Write(100 * PendingHomework.Peek().Complexity);
+                // Once we're sure everything is good, we pop the top item off.
+                PendingHomework.Pop();
             }
             catch (Exception ex)
             {
@@ -152,19 +146,16 @@ namespace CsharpOOP
                 throw ex;
             }
         }
-
         public void Sleep()
         {
             EnergyLevel = 100;
             StressLevel -= 50;
         }
-
         public void Sleep(int hours)
         {
             EnergyLevel += hours * 10;
             StressLevel -= hours * 5;
         }
-
         public string QueryEnergyLevel()
         {
             string output;
@@ -190,7 +181,6 @@ namespace CsharpOOP
             }
             return output;
         }
-
         public string QueryStressLevel()
         {
             string output;
@@ -216,12 +206,5 @@ namespace CsharpOOP
             }
             return output;
         }
-
-
-
-
-
     }
 }
-
-
