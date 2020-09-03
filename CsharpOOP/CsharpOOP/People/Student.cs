@@ -19,7 +19,8 @@ namespace CsharpOOP.People
 
         public Stack<Homework> PendingHomework { get; set; }
 
-        public WritingInstrument WritingInstrument { get; set; }
+        public WritingInstrument WritingInstrument { get; set; } //Set the WritingInstrument property in Student to be polymorphic.
+
         // We have to specify the backing variable for EnergyLevel because we are doing some validation with the value. 
         private int _energyLevel;
         private int EnergyLevel
