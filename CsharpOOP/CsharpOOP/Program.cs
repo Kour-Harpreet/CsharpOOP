@@ -40,6 +40,7 @@ namespace CsharpOOP.Shapes
                     throw new Exception("Cannot parse shape. Unknown type.");
                 }
                 writer.WriteLine(toWrite);
+
             }
         }
     }
