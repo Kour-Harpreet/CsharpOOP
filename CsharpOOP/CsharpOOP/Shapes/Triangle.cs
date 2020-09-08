@@ -4,22 +4,22 @@ using System.Text;
 
 namespace CsharpOOP.Shapes
 {
-    public struct Triangle
+    // Example of Inheritance
+    public class Triangle : Shape
     {
-        
-        public double Area => Height * Width / 2;
-        public double Perimeter => Height + Width + Math.Sqrt(Math.Pow(Height, 2) + Math.Pow(Width, 2));
+        public override double Area => Height * Width / 2;
+        public override double Perimeter => Height + Width + Math.Sqrt(Math.Pow(Height, 2) + Math.Pow(Width, 2));
 
         // Example of Abstraction
+       
         public double Height { get; set; }
 
+       
         public double Width { get; set; }
-        public Colour.ColourValue Colour { get; set; }
-
 
         // Example of Encapsulation
-
-        public Triangle(double width, double height, Colour.ColourValue colour)
+       
+        public Triangle(double width, double height, ColourValue colour)
         {
             Width = width;
             Height = height;

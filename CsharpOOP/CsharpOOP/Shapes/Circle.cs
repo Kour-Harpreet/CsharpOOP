@@ -5,13 +5,12 @@ using System.Text;
 namespace CsharpOOP.Shapes
 {
   
-    public struct Circle
+    public class Circle:Shape
     {
-      
-        public double Area => Math.PI * Math.Pow(Radius, 2);
+
+        public override double Area => Math.PI * Math.Pow(Radius, 2);
         public double Circumference => 2 * Math.PI * Radius;
-       
-        public double Perimeter => Circumference;
+        public override double Perimeter => Circumference;
         /*
         Same as:
         {
@@ -22,11 +21,10 @@ namespace CsharpOOP.Shapes
         }
         */
 
+
         public double Radius { get; set; }
-        public Colour.ColourValue Colour { get; set; }
 
-
-        public Circle(double radius, Colour.ColourValue colour)
+        public Circle(double radius, ColourValue colour)
         {
             Radius = radius;
             Colour = colour;

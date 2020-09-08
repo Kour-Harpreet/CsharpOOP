@@ -4,21 +4,19 @@ using System.Text;
 
 namespace CsharpOOP.Shapes
 {
-    public struct Rectangle
+    public class Rectangle : Shape
     {
-       
-        public double Area => Length * Width;
+        public override double Area => Length * Width;
 
-        
-        public double Perimeter => Length * 2 + Width * 2;
+        public override double Perimeter => Length * 2 + Width * 2;
+
 
         public double Length { get; set; }
 
+
+    
         public double Width { get; set; }
-
-        public Colour.ColourValue Colour { get; set; }
-
-        public Rectangle(double width, double length, Colour.ColourValue colour)
+        public Rectangle(double width, double length, ColourValue colour)
         {
             Width = width;
             Length = length;
