@@ -14,18 +14,12 @@ namespace CsharpOOP.Shapes
         private double Height { get; set; }
 
         private double Width { get; set; }
-        public ColourValue Colour { get; set; }
+        public Colour.ColourValue Colour { get; set; }
 
-        public enum ColourValue
-        {
-            Red,
-            Green,
-            Blue
-        }
 
         // Example of Encapsulation
-        
-         public Triangle(double width, double height, ColourValue colour)
+
+        public Triangle(double width, double height, Colour.ColourValue colour)
         {
             Width = width;
             Height = height;

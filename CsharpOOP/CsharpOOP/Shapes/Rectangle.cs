@@ -15,16 +15,10 @@ namespace CsharpOOP.Shapes
         private double Length { get; set; }
 
         private double Width { get; set; }
-     
-        public ColourValue Colour { get; set; }
 
-        public enum ColourValue
-        {
-            Red,
-            Green,
-            Blue
-        }
-        public Rectangle(double width, double length, ColourValue colour)
+        public Colour.ColourValue Colour { get; set; }
+
+        public Rectangle(double width, double length, Colour.ColourValue colour)
         {
             Width = width;
             Length = length;

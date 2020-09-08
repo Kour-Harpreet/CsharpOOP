@@ -23,15 +23,10 @@ namespace CsharpOOP.Shapes
         */
 
         private double Radius { get; set; }
-        public ColourValue Colour { get; set; }
+        public Colour.ColourValue Colour { get; set; }
 
-        public enum ColourValue
-        {
-            Red,
-            Green,
-            Blue
-        }
-        public Circle(double radius, ColourValue colour)
+
+        public Circle(double radius, Colour.ColourValue colour)
         {
             Radius = radius;
             Colour = colour;
