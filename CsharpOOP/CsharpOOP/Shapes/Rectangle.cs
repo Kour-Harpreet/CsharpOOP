@@ -12,9 +12,9 @@ namespace CsharpOOP.Shapes
         
         public double Perimeter => Length * 2 + Width * 2;
 
-        private double Length { get; set; }
+        public double Length { get; set; }
 
-        private double Width { get; set; }
+        public double Width { get; set; }
 
         public Colour.ColourValue Colour { get; set; }
 

@@ -22,7 +22,7 @@ namespace CsharpOOP.Shapes
         }
         */
 
-        private double Radius { get; set; }
+        public double Radius { get; set; }
         public Colour.ColourValue Colour { get; set; }
 
 
